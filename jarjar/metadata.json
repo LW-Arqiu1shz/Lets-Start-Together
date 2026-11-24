@@ -1,0 +1,16 @@
+{
+  "jars": [
+    {
+      "identifier": {
+        "group": "io.github.satxm",
+        "artifact": "mcwifipnp"
+      },
+      "version": {
+        "range": "[2.0,)",
+        "artifactVersion": "2.0.8"
+      },
+      "path": "META-INF/jarjar/mcwifipnp-2.0.8-26.1.2-neoforge.jar",
+      "isObfuscated": false
+    }
+  ]
+}
