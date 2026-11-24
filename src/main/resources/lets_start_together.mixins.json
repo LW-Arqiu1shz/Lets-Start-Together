@@ -1,0 +1,26 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.lwarqiu1shz.letsstarttogether.mixin",
+  "mixins": [
+    "ServerCommonPacketListenerImplAccessor"
+  ],
+  "client": [
+    "client.JoinMultiplayerScreenMixin",
+    "client.EditWorldScreenMixin",
+    "client.EditWorldScreenAccessor",
+    "client.CreateWorldScreenMixin",
+    "client.CreateWorldGameTabMixin",
+    "client.WorldListEntryMixin",
+    "client.IntegratedServerMixin",
+    "client.ChatComponentMixin",
+    "client.ShareToLanScreenNewMixin",
+    "client.UPnPModuleMixin",
+    "client.ClientCommonPacketListenerImplAccessor",
+    "client.MinecraftSetScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "compatibilityLevel": "JAVA_21"
+}

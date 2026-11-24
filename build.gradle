@@ -1,0 +1,44 @@
+plugins {
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
+}
+// 轮次 -rN 只属于本机测试 jar 的文件名（成品\测试版本），不进 git、不上 GitHub：
+// 轮次写在本目录不入库的 round.properties 里（mod_round=N）；没有这个文件时 jar 不带 -rN。
+// fabric.mod.json 里的版本号不带 -rN。
+group = mod_group_id
+version = mod_version
+def roundFile = file('round.properties')
+def roundProps = new Properties()
+if (roundFile.exists()) { roundFile.withInputStream { roundProps.load(it) } }
+def modRound = roundProps.getProperty('mod_round', '').trim()
+base { archivesName = mod_id }
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+repositories {
+    mavenCentral()
+    maven { url = 'https://maven.terraformersmc.com/releases/' }
+}
+def mcwifipnpJar = 'compile-libs/mcwifipnp-2.0.8-26.1.2-fabric.jar'
+dependencies {
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
+    // 模组列表里的“配置”按钮（可选）。
+    compileOnly "com.terraformersmc:modmenu:${modmenu_version}"
+    // 联机设置界面来自 LAN World Plug-n-Play（mcwifipnp，Apache-2.0，作者 Satxm、Rikka0w0）。
+    // 它原样内嵌在本模组的 jar 里（META-INF/jars，里面附有它的许可证），玩家不用另装。
+    compileOnly files(mcwifipnpJar)
+    // 开发环境里 runClient / runServer 时也带上它。
+    localRuntime files(mcwifipnpJar)
+}
+tasks.withType(JavaCompile).configureEach { options.release = 25; options.encoding = 'UTF-8' }
+processResources {
+    inputs.property 'version', project.version
+    filteringCharset = 'UTF-8'
+    filesMatching('fabric.mod.json') {
+        filter { line -> line.replace('${version}', project.version.toString()) }
+    }
+}
+if (modRound) {
+    tasks.withType(Jar).configureEach { archiveVersion = "${project.version}-r${modRound}" }
+}
+// 把 mcwifipnp 原样放进 jar 的 META-INF/jars（清单在 fabric.mod.json 的 jars）。
+tasks.named('jar') { from(mcwifipnpJar) { into 'META-INF/jars' } }
