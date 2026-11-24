@@ -1,0 +1,25 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.lwarqiu1shz.letsstarttogether.mixin",
+  "mixins": [],
+  "client": [
+    "client.JoinMultiplayerScreenMixin",
+    "client.EditWorldScreenMixin",
+    "client.EditWorldScreenAccessor",
+    "client.CreateWorldScreenMixin",
+    "client.CreateWorldGameTabMixin",
+    "client.WorldListEntryMixin",
+    "client.IntegratedServerMixin",
+    "client.ChatComponentMixin",
+    "client.WorldOptionsScreenNewMixin",
+    "client.McwifipnpConfigMixin",
+    "client.WorldOptionsLobbyMixin",
+    "client.WorldOptionsDifficultyMixin",
+    "client.UPnPModuleMixin",
+    "client.ModListSearchMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

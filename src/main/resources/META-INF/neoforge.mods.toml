@@ -1,0 +1,36 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="Let's Start Together!"
+logoFile="lets_start_together.png"
+authors="Arqiu-owo"
+description='''
+"I'm not even in yet, why did you guys start?"
+"Relax, we're just chopping some wood. Hurry up, it'll be dark soon!"
+Maybe there's always someone in your group whose connection is slow, and they just can't get in for a while. But everyone else is already in, and if you don't start playing...
+This mod is here to fix that! Start only once everyone is in: no more falling behind, and no more worrying about time passing while you wait. awa
+'''
+[[mixins]]
+config="lets_start_together.mixins.json"
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[26.3,)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+# 联机设置界面用的是 LAN World Plug-n-Play（mcwifipnp）的；它已内嵌在本模组 jar 里（META-INF/jarjar）。
+[[dependencies.${mod_id}]]
+modId="mcwifipnp"
+type="required"
+versionRange="[2.0,)"
+ordering="AFTER"
+side="CLIENT"
