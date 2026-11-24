@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "id": "lets_start_together",
+  "version": "${version}",
+  "name": "Let's Start Together!",
+  "icon": "assets/lets_start_together/icon.png",
+  "description": "\"I'm not even in yet, why did you guys start?\"\n\"Relax, we're just chopping some wood. Hurry up, it'll be dark soon!\"\nMaybe there's always someone in your group whose connection is slow, and they just can't get in for a while. But everyone else is already in, and if you don't start playing...\nThis mod is here to fix that! Start only once everyone is in: no more falling behind, and no more worrying about time passing while you wait. awa",
+  "authors": [
+    "Arqiu-owo"
+  ],
+  "license": [
+    "LGPL-3.0-only",
+    "CC-BY-NC-SA-4.0"
+  ],
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.github.lwarqiu1shz.letsstarttogether.LetsStartTogether"
+    ],
+    "client": [
+      "io.github.lwarqiu1shz.letsstarttogether.client.LetsStartTogetherClient"
+    ],
+    "modmenu": [
+      "io.github.lwarqiu1shz.letsstarttogether.client.LobbyModMenu"
+    ]
+  },
+  "mixins": [
+    "lets_start_together.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "minecraft": "~26.3",
+    "java": ">=25",
+    "fabric-api": "*",
+    "mcwifipnp": ">=2.0"
+  },
+  "suggests": {
+    "modmenu": "*"
+  },
+  "jars": [
+    {
+      "file": "META-INF/jars/mcwifipnp-2.1.4-26.3-fabric.jar"
+    }
+  ]
+}
